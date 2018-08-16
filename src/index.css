@@ -1,0 +1,55 @@
+/* Theme color for link/buttons:
+rgba( 22, 230, 137, 1 )
+OR
+007bff */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+
+.link {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.link:hover {
+  color: #0056b3;
+  text-decoration: none;
+}
+
+/* Layout */
+/* Navbar */
+
+#search-bar {
+  text-align: center;
+}
+
+#search-form {
+  margin-right: 41.8%;
+}
+
+.navbar {
+  /* to fix: make this fixed at the top */
+  margin-bottom: 60px;
+}
+
+/* .navbar-brand {
+  margin-left: 100px /* REPLACE THIS WITH A CONTAINER */
+
+/* Navbar */
+
+
+/* Layout */
