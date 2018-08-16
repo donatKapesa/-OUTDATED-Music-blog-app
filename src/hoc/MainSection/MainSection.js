@@ -8,6 +8,10 @@ import NewPost from '../../containers/NewPost/NewPost';
 class Main extends Component {
     state = {
         addingNewPost: false,
+        newPost: {
+            caption: '',
+            embedLink: ''
+        }
     }
 
     // Should I put anything in componentDidMount? We only need to mount this modal once !! then it will just be hidden
@@ -20,15 +24,27 @@ class Main extends Component {
         this.setState({addingNewPost: false});
     }
 
+    // should this be inside posts? If yes, then also mode Modal ! not good
     sharedNewPostHandler = (caption, embedLink) => {
-        this.setState({addingNewPost: false});
-        console.log("post shared");
+
+        const newPostToAdd = {
+            caption: caption,
+            embedLink: embedLink
+        }
+
+        this.setState({
+            addingNewPost: false,
+            newPost: {newPostToAdd}
+        }, () => {
+            console.log(this.state.newPost);
+        } );
     }
 
     render() {
         return(
             <Aux>
-                <Posts />
+                <Posts
+                    newPost={this.state.newPost} />
                 <Modal showModal={this.state.addingNewPost} modalClosed={this.cancelNewPostHandler}>
                     <NewPost 
                         showModal={this.state.addingNewPost}

@@ -5,6 +5,11 @@ import PosterProfile from '../../../components/PosterProfile/PosterProfile';
 
 class Post extends Component {
 
+    // componentWillMount() {
+    //     console.log(this.props.caption)
+    //     this.props.addNewPostHandler;
+    // }
+
     render() {
         // console.log(this.props);
         return(
