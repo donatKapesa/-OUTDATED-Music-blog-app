@@ -24,26 +24,29 @@ class Posts extends Component {
 
     // OVERLOADING NETWORK WITH INFINITE NUMBER OF REQUESTS
     componentDidMount() {
+        console.log("[Posts] - componentDidMount");
         axios.get("https://music-blog-app.firebaseio.com/users/user/posts.json")
             .then(response => {
                 let postsFromServer = response.data;
-                // console.log(postsFromServer);
-                Object.keys(postsFromServer)
-                    .map((uniqueKey) => {
-                        // console.log(uniqueKey);
+
+                let initialPostsFromDatabase = [];
+                Object.keys(postsFromServer) // returns uniqueKeys objects which each have caption, embedLink
+                    .map((uniqueKey, index) => {
                         // console.log(postsFromServer[uniqueKey]);
-                        this.setState(prevState =>({
-                            posts: [...this.state.posts, postsFromServer[uniqueKey]]
-                        }));
+                        // this.setState(prevState =>({
+                        //     posts: [...this.state.posts, postsFromServer[uniqueKey]]
+                        // }));
+                        initialPostsFromDatabase[index] = postsFromServer[uniqueKey];
                         return postsFromServer[uniqueKey];
                     });
-                // console.log(posts);
-                // console.log(this.state.posts);
+                // console.log(initialPostsFromDatabase);
+                this.setState({ posts: initialPostsFromDatabase }); // fixed infinite loop like this but still too many requests
             })
             .catch(error => {
                 console.log(error);
             });
     }
+    // Why does it re-render immediately when I post something?
 
     addingNewPostHandler = () => {
         this.setState({addingNewPost: true});
@@ -76,6 +79,7 @@ class Posts extends Component {
         // } );
 
         // posting to server
+        // Why does it re-render immediately when I post something? Because of setState?
         axios.post('https://music-blog-app.firebaseio.com/users/user/posts.json', newPostToAdd)
             .then(response => {
                 console.log(response); // maybe do SetState here !!

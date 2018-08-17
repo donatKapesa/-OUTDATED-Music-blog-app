@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 
 import './NewPost.css';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
+import Modal from '../../components/UI/Modal/Modal';
 
 class NewPost extends Component {
     state = {
         caption: '',
-        embedSrcLink: ''
+        embedSrcLink: '',
+        searchSong: false
     }
 
     onChangeHandler = (e) => {
@@ -16,8 +18,15 @@ class NewPost extends Component {
     }
 
     onSubmitHandler = (e) => {
-        // console.log(this.state.caption + " " + this.state.embedSrcLink);
         this.props.sharedNewPost(this.state.caption, this.state.embedSrcLink);
+    }
+
+    songSearchHandler = () => {
+        this.setState({searchSong: true});
+    }
+
+    cancelSongSearchHandler = () => {
+        this.setState({searchSong: false});
     }
 
     render() {
@@ -39,10 +48,17 @@ class NewPost extends Component {
                         name="embedSrcLink"
                         id="embed-link-textarea" 
                         // value={this.state.embedSrcLink} 
-                        placeholder="embed link to music"
+                        placeholder="search music from spotify"
+                        onClick={this.songSearchHandler}
                         onChange={(e) => this.onChangeHandler(e)} />
-
-                    {/* on click, call a function inside Main or Posts that adds new post and calls sharePost */}
+                    
+                    {/* modal closed will be on click */}
+                    <Modal showModal={this.state.searchSong} modalClosed={this.cancelSongSearchHandler} >
+                        <div>
+                            search api will go here
+                        </div>
+                    </Modal>
+                    
                     <button onClick={(e) => this.onSubmitHandler(e)}>Share</button>
                 </div>
             </div>
@@ -53,9 +69,9 @@ class NewPost extends Component {
 export default NewPost;
 
 
-{/* <input 
+/* <input 
     name="embedSrcLink"
     id="embed-link-textarea" 
     // value={this.state.embedSrcLink} 
     placeholder="embed link to music"
-    onChange={(e) => this.onChangeHandler(e)}></input> */}
+    onChange={(e) => this.onChangeHandler(e)}></input> */
