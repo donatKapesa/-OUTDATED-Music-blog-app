@@ -5,7 +5,7 @@ import './Backdrop.css';
 const backdrop = (props) => {
     // console.log(props.showModal);
     return(
-        props.showModal ? <div className='backdrop' onClick={props.clicked}></div> : null
+        props.showModal ? <div className={props.backdropStyles} onClick={props.clicked}></div> : null
     );
 }
 

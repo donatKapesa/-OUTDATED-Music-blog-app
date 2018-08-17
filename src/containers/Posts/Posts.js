@@ -111,7 +111,7 @@ class Posts extends Component {
         
         return(
             <Aux>
-                <Modal showModal={this.state.addingNewPost} modalClosed={this.cancelNewPostHandler}>
+                <Modal styles="Modal" backdropStyles="backdrop" showModal={this.state.addingNewPost} modalClosed={this.cancelNewPostHandler}>
                     <NewPost 
                         showModal={this.state.addingNewPost}
                         sharedNewPost={this.sharedNewPostHandler} />
