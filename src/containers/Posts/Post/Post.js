@@ -20,7 +20,7 @@ class Post extends Component {
                         <h5 className="card-caption">{this.props.caption}</h5>
                         {/* <p className="card-text">Embed goes here:</p> */}
                         <div className="embed-iframe">
-                            <iframe title="embed" src={this.props.embedLink} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            <iframe title="embed" src={this.props.embedSrcLink} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         </div>
                     </div>
                     <div className="card-footer"> {/*Maybe remove margin top and grey color by changing this to card footer*/}

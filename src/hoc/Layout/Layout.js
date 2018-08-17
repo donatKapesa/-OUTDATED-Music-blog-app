@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Navbar from '../../Navigation/Navbar';
+import Navbar from '../../components/Navigation/Navbar';
 import Aux from '../Aux/Aux';
 import Main from '../MainSection/MainSection';
 

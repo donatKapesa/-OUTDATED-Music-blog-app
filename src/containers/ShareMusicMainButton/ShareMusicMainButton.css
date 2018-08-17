@@ -2,6 +2,7 @@
     position: fixed;
     top: 80%;
     left: 70%;
+    z-index: 499; /* MUST BE LESS THAN MODAL */
   }
   
   /* https://codepen.io/hakimel/pen/rJtus */
@@ -55,30 +56,4 @@
     top: 0px;
     box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.0 );
     background: rgba( 20, 224, 133, 1 );
-  }
-  
-  
-  .circle {
-    position: fixed;
-    top: 80%;
-    left: 70%;
-  
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: rgb(44,108,128);
-    }
-    
-  .circle::before {
-    content: "+";
-    height:50px;
-    width:50px;
-    font-size:50px;
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    font-family:courier;
-    color:white;
   }

@@ -1,5 +1,6 @@
 import React from 'react';
-// import logo from '../assets/images/bootstrap-logo.png';
+import './Navbar.css';
+import SearchBar from '../UI/SearchBar/SearchBar';
 
 const navbar = () => (
     <nav className="navbar navbar-light bg-light">
@@ -9,7 +10,14 @@ const navbar = () => (
             </a>
             <form id="search-form" className="form-inline">
                 <div className="input-group">
-                <input id="search-bar" type="text" className="form-control" placeholder="Search..." aria-label="Username" aria-describedby="basic-addon1"></input>
+                    <SearchBar
+                        name="main-search-bar"
+                        id="search-bar"
+                        type="text"
+                        className="form-control"
+                        placeholder="Search..."
+                        ariaLabel="Username"
+                        ariaDescribedby="basic-addon1" />
                 </div>
             </form>
         </div>
