@@ -8,7 +8,7 @@ class SongSearchResultsForPosting extends Component {
         let playlists;
         let artists;
         if(this.props.searchResults) {
-            console.log(this.props.searchResults);
+            // console.log(this.props.searchResults);
             tracks = this.props.searchResults.tracks;
             albums = this.props.searchResults.albums;
             playlists = this.props.searchResults.playlists;
@@ -27,10 +27,10 @@ class SongSearchResultsForPosting extends Component {
         // })
         return(
             <div style={{overflow: 'scroll', display: 'flex'}} className="searchResults">
-                <SpecificSearchResult key='1' specificSearchResults={tracks} type='tracks' />
-                <SpecificSearchResult key='2' specificSearchResults={albums} type='albums' />
+                <SpecificSearchResult key='1' specificSearchResults={tracks} type='tracks' clickedResult={this.props.clickedResult} />
+                <SpecificSearchResult key='2' specificSearchResults={albums} type='albums' clickedResult={this.props.clickedResult} />
                 {/* <SpecificSearchResult key='3' specificSearchResults={playlists} type='playlists' /> */}
-                <SpecificSearchResult key='3' specificSearchResults={artists} type='artists' />
+                <SpecificSearchResult key='3' specificSearchResults={artists} type='artists' clickedResult={this.props.clickedResult} />
             </div>
         )
     }

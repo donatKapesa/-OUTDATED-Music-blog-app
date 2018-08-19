@@ -18,7 +18,8 @@ class NewPost extends Component {
         accessToken: '',
         search: '',
         searchResults: {},
-        renderResults: null
+        renderResults: null,
+        clickedResult: null
     }
 
     componentDidMount() {
@@ -27,6 +28,10 @@ class NewPost extends Component {
         let accessToken = parsed.access_token
 
         this.setState({accessToken: accessToken});
+    }
+
+    clickedResultHandler = (e) => {
+        console.log(e.target.value);
     }
 
     executeRequestHandler = () => {
@@ -72,7 +77,7 @@ class NewPost extends Component {
                     success: (response) => {
                         this.setState({searchResults: response}, () => {
                             // console.log(this.state.searchResults)
-                            let renderResults = <SongSearchResultsForPosting searchResults={this.state.searchResults} />
+                            let renderResults = <SongSearchResultsForPosting searchResults={this.state.searchResults} clickedResult={this.clickedResultHandler} />
                             return this.setState({renderResults: renderResults});
                         });
                     },
@@ -144,3 +149,7 @@ export default NewPost;
     // value={this.state.embedSrcLink} 
     placeholder="embed link to music"
     onChange={(e) => this.onChangeHandler(e)}></input> */
+
+    // clickedResultHandler = (embedLink) => {
+    //     this.setState({embedSrcLink: embedLink}, () => console.log(this.state.embedSrcLink));
+    // }

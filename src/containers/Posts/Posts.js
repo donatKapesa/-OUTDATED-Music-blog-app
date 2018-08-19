@@ -24,6 +24,7 @@ class Posts extends Component {
 
     // OVERLOADING NETWORK WITH INFINITE NUMBER OF REQUESTS
     componentDidMount() {
+        var self = this;
         console.log("[Posts] - componentDidMount");
         axios.get("https://music-blog-app.firebaseio.com/users/user/posts.json")
             .then(response => {
@@ -39,8 +40,9 @@ class Posts extends Component {
                         initialPostsFromDatabase[index] = postsFromServer[uniqueKey];
                         return postsFromServer[uniqueKey];
                     });
-                // console.log(initialPostsFromDatabase);
-                this.setState({ posts: initialPostsFromDatabase }); // fixed infinite loop like this but still too many requests
+                    console.log(initialPostsFromDatabase);
+                    self.setState({ posts: initialPostsFromDatabase }); // fixed infinite loop like this but still too many requests
+                    console.log(this.state.posts);
             })
             .catch(error => {
                 console.log(error);
@@ -123,11 +125,11 @@ class Posts extends Component {
         
         return(
             <Aux>
-                <Modal styles="Modal" backdropStyles="backdrop" showModal={this.state.addingNewPost} modalClosed={this.cancelNewPostHandler}>
+                {/* <Modal styles="Modal" backdropStyles="backdrop" showModal={this.state.addingNewPost} modalClosed={this.cancelNewPostHandler}>
                     <NewPost 
                         showModal={this.state.addingNewPost}
                         sharedNewPost={this.sharedNewPostHandler} />
-                </Modal>
+                </Modal> */}
                 <ShareMusicMainButton
                     clicked={this.addingNewPostHandler} />
 

@@ -15,12 +15,12 @@ const specificSearchResfult = (props) => {
     // });
     if(items) {
         items.map((element, index) => {
-            return singleResult[index] = <SingleResult key={index} item={element}/>
+            // console.log(element);
+            return singleResult[index] = <SingleResult key={index} item={element} clickedResult={props.clickedResult} />
         })
     } else (
         console.log('no items passed')
     )
-
     return (
         <div className='specificResults'>
             <p>{props.type}</p>
