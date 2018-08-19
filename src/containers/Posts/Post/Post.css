@@ -37,11 +37,11 @@
   }
   
   .card {
-    margin-left: auto;
+    /* margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 302px!important;
+    width: 302px!important; */
     /* width: 340px; if padding of card-body = 20px */
   }
   

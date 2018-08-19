@@ -19,7 +19,7 @@ class Posts extends Component {
         // how to dynamically increment id each time you add new post
         posts: [],
 
-        addingNewPost: false
+        addingNewPost: true
     }
 
     // OVERLOADING NETWORK WITH INFINITE NUMBER OF REQUESTS
@@ -45,6 +45,7 @@ class Posts extends Component {
             .catch(error => {
                 console.log(error);
             });
+
     }
     // Why does it re-render immediately when I post something?
 
@@ -95,23 +96,34 @@ class Posts extends Component {
     }
 
     render() {
-        // console.log("posts props are: " + this.props);
-        // console.log(this.state.posts);
         let posts = [];
         // if posts.length === 0 display <p>User hasn't shared any posts yet</p>
         // replace index as key and make post ID the key
-        this.state.posts.map((post, index) => {
-            return posts[index] = <Post
-                                // key={this.state.posts[index].id}
-                                key={index}
-                                caption={this.state.posts[index].caption}
-                                embedSrcLink={this.state.posts[index].embedSrcLink}
-                                addNewPostHandler={this.addNewPostHandler} />
-        });
+        // this.state.posts.map((post, index) => {
+        //     return posts[index] = <Post
+        //                         // key={this.state.posts[index].id}
+        //                         key={index}
+        //                         caption={this.state.posts[index].caption}
+        //                         embedSrcLink={this.state.posts[index].embedSrcLink}
+        //                         addNewPostHandler={this.addNewPostHandler} />
+        // });
+
+        if(this.state.posts.length === 0) { // TEST THIS ONCE I FINISH THE SONGSEARCH BAR
+            posts = <h1>Nothing to show here !</h1>
+        } else {
+            this.state.posts.map((post, index) => {
+                return posts[index] = <Post
+                                    // key={this.state.posts[index].id}
+                                    key={index}
+                                    caption={this.state.posts[index].caption}
+                                    embedSrcLink={this.state.posts[index].embedSrcLink}
+                                    addNewPostHandler={this.addNewPostHandler} />
+            });
+        }
         
         return(
             <Aux>
-                <Modal showModal={this.state.addingNewPost} modalClosed={this.cancelNewPostHandler}>
+                <Modal styles="Modal" backdropStyles="backdrop" showModal={this.state.addingNewPost} modalClosed={this.cancelNewPostHandler}>
                     <NewPost 
                         showModal={this.state.addingNewPost}
                         sharedNewPost={this.sharedNewPostHandler} />

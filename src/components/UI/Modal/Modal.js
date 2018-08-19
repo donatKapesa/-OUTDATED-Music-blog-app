@@ -6,10 +6,11 @@ import './Modal.css';
 const Modal = (props) => (
     <Aux>
         <Backdrop
+            backdropStyles={props.backdropStyles}
             showModal={props.showModal}
             clicked={props.modalClosed} />
         <div 
-            className="Modal"
+            className={props.styles}
             style = {{
                 transform: props.showModal ? 'translateY(0)' : 'translateY(-100vh)',
                 opacity: props.showModal ? '1' : '0'

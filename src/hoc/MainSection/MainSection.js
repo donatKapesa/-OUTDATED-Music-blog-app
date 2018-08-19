@@ -6,7 +6,6 @@ class Main extends Component {
 
     // Should I put anything in componentDidMount? We only need to mount this modal once !! then it will just be hidden
 
-
     render() {
         return(
             <Aux>
